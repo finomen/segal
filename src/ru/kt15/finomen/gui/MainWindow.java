@@ -42,11 +42,17 @@ public class MainWindow {
 		
 		TabFolder tabFolder = new TabFolder(shlTasks, SWT.NONE);
 		
-		TabItem tbtmTask = new TabItem(tabFolder, SWT.NONE);
-		tbtmTask.setText("Task1");
+		TabItem tbtmTask1 = new TabItem(tabFolder, SWT.NONE);
+		tbtmTask1.setText("Task1");
 		
-		Composite composite = new Task1(tabFolder, SWT.NONE);
-		tbtmTask.setControl(composite);
+		Composite composite1 = new Task1(tabFolder, SWT.NONE);
+		tbtmTask1.setControl(composite1);
+		
+		TabItem tbtmTask2 = new TabItem(tabFolder, SWT.NONE);
+		tbtmTask2.setText("Task2");
+		
+		Composite composite2 = new Task2(tabFolder, SWT.NONE);
+		tbtmTask2.setControl(composite2);
 		
 		shlTasks.open();
 		shlTasks.layout();
