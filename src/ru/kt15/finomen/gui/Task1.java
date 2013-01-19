@@ -189,9 +189,7 @@ public class Task1 extends Composite {
 	}
 	
 	private void updateGraphs() {
-		for (AbstractDrawable d : chart.getScene().getGraph().getAll()) {
-			chart.removeDrawable(d);
-		}
+		chart.getScene().getGraph().getAll().clear();
 		graphsPanel.dispose();
 		graphsPanel = new Composite(scroll, SWT.NONE);
 		graphsPanel.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
