@@ -194,7 +194,7 @@ public class Task1 extends Composite {
 		graphsPanel = new Composite(scroll, SWT.NONE);
 		graphsPanel.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
 		
-		final ConcurrentLinkedQueue<GraphWidget> wQueue = new ConcurrentLinkedQueue<>();
+		final ConcurrentLinkedQueue<GraphWidget> wQueue = new ConcurrentLinkedQueue<GraphWidget>();
 		
 		for (double r = readSpinner(startR); r <= readSpinner(endR); r += readSpinner(rStep)) {
 			GraphWidget w = new GraphWidget(graphsPanel, SWT.NONE, r, chart);
