@@ -140,10 +140,22 @@ public class Task2 extends Composite {
 					width.setSelection(40);
 					steps.setSelection(200);
 					nodes.setSelection(200);
-					kappa.setSelection(31);
-					mu.setSelection(0);
+					kappa.setSelection(0);
+					mu.setSelection(5);
 					break;
 				case 3:
+					width.setSelection(40);
+					steps.setSelection(200);
+					nodes.setSelection(200);
+					kappa.setSelection(0);
+					mu.setSelection(15);
+					break;
+				case 4:
+					width.setSelection(40);
+					steps.setSelection(200);
+					nodes.setSelection(200);
+					kappa.setSelection(31);
+					mu.setSelection(0);
 					break;
 				}
 				
