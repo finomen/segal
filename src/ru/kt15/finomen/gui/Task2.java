@@ -321,6 +321,7 @@ public class Task2 extends Composite {
 		});
 		
 		((Shape)shape).setColorMapper(new ColorMapper(new ColorMapHotCold(), shape.getBounds().getZmin(), shape.getBounds().getZmax()));
+		((Shape)shape).setWireframeDisplayed(false);
 		
 		new Thread(new Runnable() {
 			@Override
