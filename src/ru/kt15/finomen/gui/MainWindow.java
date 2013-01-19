@@ -54,6 +54,12 @@ public class MainWindow {
 		Composite composite2 = new Task2(tabFolder, SWT.NONE);
 		tbtmTask2.setControl(composite2);
 		
+		TabItem tbtmCW = new TabItem(tabFolder, SWT.NONE);
+		tbtmCW.setText("CW");
+		
+		Composite composite3 = new CW(tabFolder, SWT.NONE);
+		tbtmCW.setControl(composite3);
+		
 		shlTasks.open();
 		shlTasks.layout();
 		while (!shlTasks.isDisposed()) {
