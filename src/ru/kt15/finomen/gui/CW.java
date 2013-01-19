@@ -95,7 +95,7 @@ public class CW extends Composite {
 		
 		timeStep = new Spinner(grpControl, SWT.BORDER);
 		timeStep.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		timeStep.setSelection(1);
+		timeStep.setSelection(50);
 		timeStep.setDigits(1);
 		
 		Label lblNodes = new Label(grpControl, SWT.NONE);
@@ -104,7 +104,7 @@ public class CW extends Composite {
 		nodes = new Spinner(grpControl, SWT.BORDER);
 		nodes.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		nodes.setMaximum(1000);
-		nodes.setSelection(500);
+		nodes.setSelection(100);
 		
 		Label lblNodeStep = new Label(grpControl, SWT.NONE);
 		lblNodeStep.setText("Node step");
@@ -258,7 +258,7 @@ public class CW extends Composite {
 		final double T = readSpinner(this.t);
 		
 		progressBar.setMaximum(steps * 5);
-		
+		final int res = 10;
 		new Thread(new Runnable() {
 
 			@Override
@@ -277,7 +277,7 @@ public class CW extends Composite {
                 				});
                             }
                         });
-				
+				/*
 				System.out.println("Concentration scatter...");
 				ArrayList<Coord3d> as = new ArrayList<Coord3d>();
 				
@@ -299,16 +299,23 @@ public class CW extends Composite {
 				}
 				
 				concentrationScatter = new Scatter(as.toArray(new Coord3d[0]), Color.YELLOW);
+				*/
+				getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						progressBar.setSelection(progressBar.getSelection() + steps);
+					}
+				});
 				
 				System.out.println("Concentration surface...");
-				concentrationSurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps, new Range(0, nodes), nodes), new Mapper() {			
+				concentrationSurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps / res, new Range(0, nodes), nodes / res), new Mapper() {			
 					@Override
 					public double f(double x, double y) {
 						if ((int)y == 0) {
 							getDisplay().asyncExec(new Runnable() {
 								@Override
 								public void run() {
-									progressBar.setSelection(progressBar.getSelection() + 1);
+									progressBar.setSelection(progressBar.getSelection() + res);
 								}
 							});
 						}
@@ -320,14 +327,14 @@ public class CW extends Composite {
 				concentrationSurface.setWireframeDisplayed(false);
 				
 				System.out.println("Energy surface...");
-				energySurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps, new Range(0, nodes), nodes), new Mapper() {			
+				energySurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps / res, new Range(0, nodes), nodes / res), new Mapper() {			
 					@Override
 					public double f(double x, double y) {
 						if ((int)y == 0) {
 							getDisplay().asyncExec(new Runnable() {
 								@Override
 								public void run() {
-									progressBar.setSelection(progressBar.getSelection() + 1);
+									progressBar.setSelection(progressBar.getSelection() + res);
 								}
 							});
 						}
@@ -339,14 +346,14 @@ public class CW extends Composite {
 				energySurface.setWireframeDisplayed(false);
 				
 				System.out.println("Temperature surface...");
-				temperatureSurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps, new Range(0, nodes), nodes), new Mapper() {			
+				temperatureSurface = Builder.buildOrthonormal(new OrthonormalGrid(new Range(0, steps), steps / res, new Range(0, nodes), nodes / res), new Mapper() {			
 					@Override
 					public double f(double x, double y) {
 						if ((int)y == 0) {
 							getDisplay().asyncExec(new Runnable() {
 								@Override
 								public void run() {
-									progressBar.setSelection(progressBar.getSelection() + 1);
+									progressBar.setSelection(progressBar.getSelection() + res);
 								}
 							});
 						}
@@ -364,7 +371,7 @@ public class CW extends Composite {
 					@Override
 					public void run() {
 						progressBar.setEnabled(false);
-						btnConcentartionScatter.setEnabled(true);
+						//btnConcentartionScatter.setEnabled(true);
 						btnConcentrationSurface.setEnabled(true);
 						btnTemperatureSurface.setEnabled(true);
 						btnEnergySurface.setEnabled(true);
