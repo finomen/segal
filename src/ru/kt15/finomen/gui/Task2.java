@@ -299,7 +299,7 @@ public class Task2 extends Composite {
 				if (r > 1) {
 					return 1 + r / 1e95;
 				} else if (r < 0) {
-					return r / 1e95;
+					return -1 + r / 1e95;
 				} else {
 					return r;
 				}
