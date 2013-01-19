@@ -27,6 +27,7 @@ import org.jzy3d.colors.colormaps.ColorMapRainbow;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.maths.Scale;
+import org.jzy3d.plot3d.primitives.AbstractDrawable;
 import org.jzy3d.plot3d.primitives.MultiColorScatter;
 import org.jzy3d.plot3d.primitives.axes.AxeBox;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
@@ -188,7 +189,9 @@ public class Task1 extends Composite {
 	}
 	
 	private void updateGraphs() {
-		chart.getScene().clear();
+		for (AbstractDrawable d : chart.getScene().getGraph().getAll()) {
+			chart.removeDrawable(d);
+		}
 		graphsPanel.dispose();
 		graphsPanel = new Composite(scroll, SWT.NONE);
 		graphsPanel.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
