@@ -179,7 +179,7 @@ public class Task2 extends Composite {
 		
 		steps = new Spinner(grpParams, SWT.BORDER);
 		steps.setMaximum(200);
-		steps.setSelection(10);
+		steps.setSelection(20);
 		GridData gd_steps = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_steps.widthHint = 85;
 		steps.setLayoutData(gd_steps);
@@ -254,6 +254,8 @@ public class Task2 extends Composite {
 		int nodes = this.steps.getSelection();
 		double kappa = readSpinner(this.kappa);
 		double mu = readSpinner(this.mu);
+		
+		System.out.println(kappa + " " + mu);
 		
 		Schema schema = schemas[this.schema];
 		double[] startValues = new double[nodes];
