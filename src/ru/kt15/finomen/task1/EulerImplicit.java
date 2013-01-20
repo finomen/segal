@@ -10,7 +10,10 @@ public class EulerImplicit extends Solver {
 	
 	@Override
 	public void run() {
-		for (int ix = 0; ix < max / h; ++ix) {		
+		EquationSystemSolver solver = new EquationSystemSolver();
+		for (int ix = 0; ix < max / h; ++ix) {
+			
+			/*
 			double[] vn = result[ix];
 			double[] vnn = new double[vn.length];
 			
@@ -24,7 +27,12 @@ public class EulerImplicit extends Solver {
 			}
 			
 			result[ix + 1] = vn;
+			*/
+			progress(ix, (int) (max / h));
+			result[ix + 1] = solver.solve(result[ix], h, system);
 		}
+		
+		solver.free();
 	}
 
 	@Override

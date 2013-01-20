@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="lib/jogl2-rc10/jogl-all.jar"/>
 	<classpathentry kind="lib" path="lib/misc/opencsv-2.1.jar"/>
 	<classpathentry kind="lib" path="lib/misc/org.convexhull.jar"/>
+	<classpathentry kind="lib" path="JLink.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
