@@ -304,10 +304,10 @@ public class Task2 extends Composite {
 			@Override
 			public double f(double x, double y) {
 				double r = result[Math.min(result.length - 1, (int)x)][Math.min(result[0].length - 1, (int)y)];
-				if (r > 1) {
-					return 1 + r / 1e95;
-				} else if (r < 0) {
-					return -1 + r / 1e95;
+				if (r > 3) {
+					return 3 + Math.log(r);
+				} else if (r < -3) {
+					return -3 - Math.log(-r);
 				} else {
 					return r;
 				}
