@@ -20,7 +20,6 @@ import ru.kt15.finomen.task1.Adams;
 import ru.kt15.finomen.task1.EquationSystem;
 import ru.kt15.finomen.task1.EulerExplicit;
 import ru.kt15.finomen.task1.EulerImplicit;
-import ru.kt15.finomen.task1.EulerRealImplicit;
 import ru.kt15.finomen.task1.Function;
 import ru.kt15.finomen.task1.ProgressHandler;
 import ru.kt15.finomen.task1.RungeKutta;

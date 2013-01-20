@@ -1,8 +1,8 @@
 package ru.kt15.finomen.task1;
 
-import java.util.Locale;
-
-import com.wolfram.jlink.*;
+import com.wolfram.jlink.KernelLink;
+import com.wolfram.jlink.MathLinkException;
+import com.wolfram.jlink.MathLinkFactory;
 
 public class EquationSystemSolver {
 	private KernelLink ml = null;

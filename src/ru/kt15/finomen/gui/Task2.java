@@ -1,9 +1,33 @@
 package ru.kt15.finomen.gui;
 
 import java.awt.Component;
-import java.util.ArrayList;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Spinner;
+import org.jzy3d.chart.Chart;
+import org.jzy3d.chart.controllers.mouse.camera.CameraMouseController;
+import org.jzy3d.chart.controllers.thread.camera.CameraThreadController;
+import org.jzy3d.colors.Color;
+import org.jzy3d.colors.ColorMapper;
+import org.jzy3d.colors.colormaps.ColorMapHotCold;
+import org.jzy3d.maths.Range;
+import org.jzy3d.maths.Scale;
+import org.jzy3d.plot3d.builder.Builder;
+import org.jzy3d.plot3d.builder.Mapper;
+import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
+import org.jzy3d.plot3d.primitives.AbstractDrawable;
+import org.jzy3d.plot3d.primitives.Shape;
+import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import ru.kt15.finomen.task2.ExplicitDownstream;
 import ru.kt15.finomen.task2.ExplicitUpstream;
@@ -11,36 +35,7 @@ import ru.kt15.finomen.task2.ImplicitDownstream;
 import ru.kt15.finomen.task2.ImplicitUpstream;
 import ru.kt15.finomen.task2.Schema;
 import swing2swt.layout.BorderLayout;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.SWT;
 import swing2swt.layout.BoxLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Spinner;
-import org.eclipse.swt.awt.SWT_AWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.jzy3d.chart.Chart;
-import org.jzy3d.chart.controllers.mouse.camera.CameraMouseController;
-import org.jzy3d.chart.controllers.thread.camera.CameraThreadController;
-import org.jzy3d.colors.Color;
-import org.jzy3d.colors.ColorMapper;
-import org.jzy3d.colors.colormaps.ColorMapHotCold;
-import org.jzy3d.colors.colormaps.ColorMapRainbow;
-import org.jzy3d.maths.Coord3d;
-import org.jzy3d.maths.Range;
-import org.jzy3d.maths.Scale;
-import org.jzy3d.plot3d.builder.Builder;
-import org.jzy3d.plot3d.builder.Mapper;
-import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
-import org.jzy3d.plot3d.primitives.AbstractDrawable;
-import org.jzy3d.plot3d.primitives.MultiColorScatter;
-import org.jzy3d.plot3d.primitives.Scatter;
-import org.jzy3d.plot3d.primitives.Shape;
-import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 public class Task2 extends Composite {
 
@@ -68,7 +63,6 @@ public class Task2 extends Composite {
 	 */
 	public Task2(Composite parent, int style) {
 		super(parent, style);
-		this.chart = chart;
 		setLayout(new BorderLayout(0, 0));
 		
 		Group grpControl = new Group(this, SWT.NONE);

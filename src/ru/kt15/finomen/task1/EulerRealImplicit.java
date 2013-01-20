@@ -1,11 +1,8 @@
 package ru.kt15.finomen.task1;
 
 public class EulerRealImplicit extends Solver {
-	private final int steps;
-	
 	public EulerRealImplicit(int steps, double h, double size, double[] v0, Function...system) {
 		super(h, size, v0, system);
-		this.steps = steps;
 	}
 	
 	@Override
