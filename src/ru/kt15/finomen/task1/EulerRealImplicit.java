@@ -1,9 +1,9 @@
 package ru.kt15.finomen.task1;
 
-public class EulerImplicit extends Solver {
-private final int steps;
+public class EulerRealImplicit extends Solver {
+	private final int steps;
 	
-	public EulerImplicit(int steps, double h, double size, double[] v0, Function...system) {
+	public EulerRealImplicit(int steps, double h, double size, double[] v0, Function...system) {
 		super(h, size, v0, system);
 		this.steps = steps;
 	}
@@ -13,7 +13,7 @@ private final int steps;
 		EquationSystemSolver solver = new EquationSystemSolver();
 		for (int ix = 0; ix < max / h; ++ix) {
 			
-			
+			/*
 			double[] vn = result[ix];
 			double[] vnn = new double[vn.length];
 			
@@ -27,6 +27,9 @@ private final int steps;
 			}
 			
 			result[ix + 1] = vn;
+			*/
+			progress(ix, (int) (max / h));
+			result[ix + 1] = solver.solve(result[ix], h, system);
 		}
 		
 		solver.free();
